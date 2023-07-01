@@ -4,7 +4,7 @@
 
 *Enhance your LogSeq experience with sounds.*
 
-Currently adds a ding whenever you complete a task.
+Currently adds a ding whenever you complete a task. You can optionally configure the sound that is played.
 
 ---
 
