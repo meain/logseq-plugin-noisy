@@ -7,15 +7,20 @@ const settingsTemplate = [
     type: "string",
     default: "",
     title: "Sound for marking as DONE",
-    description: "Provide an absolute path to a sound file",
+    description: "Provide a url or an absolute path to a sound file",
   },
 ];
 
 let notified = {};
 
 function beep() {
-  // TODO: Optionally load sound mentioned in config
-  const audioUrl = require("url:./default-sound.mp3");
+  let audioUrl = require("url:./default-sound.mp3");
+
+  if (logseq.settings.doneSound !== "") {
+    audioUrl = logseq.settings.doneSound;
+    audioUrl = audioUrl.startsWith("http") ? audioUrl : `file://${audioUrl}`;
+  }
+
   const snd = new Audio(audioUrl);
   snd.play();
 }
