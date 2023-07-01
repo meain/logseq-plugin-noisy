@@ -34,6 +34,7 @@ const main = async () => {
     const taskBlock = e.blocks.find((block) => block.marker === "DONE");
     if (!taskBlock) return;
     if (e.txMeta.outlinerOp !== "saveBlock") return; // don't trigger on move or open
+    if (e.txMeta["skipProperties?"]) return; // don't trigger on edit (not reliable)
 
     // Don't notify if already notified in the last .5s. This is
     // necessary as any other change to the block will trigger this
