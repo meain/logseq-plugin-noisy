@@ -29,9 +29,11 @@ const main = async () => {
   console.log("Noisy plugin loaded");
   logseq.useSettingsSchema(settingsTemplate);
 
+  // TODO: Don't make sound when the operation was not marking as done
   logseq.DB.onChanged(async (e) => {
     const taskBlock = e.blocks.find((block) => block.marker === "DONE");
     if (!taskBlock) return;
+    if (e.txMeta.outlinerOp !== "saveBlock") return; // don't trigger on move or open
 
     // Don't notify if already notified in the last .5s. This is
     // necessary as any other change to the block will trigger this
