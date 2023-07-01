@@ -1,0 +1,27 @@
+{
+  "name": "logseq-plugin-noisy",
+  "version": "0.1.0",
+  "description": "Enhance your LogSeq experience with sounds",
+  "main": "dist/index.html",
+  "targets": {
+    "main": false
+  },
+  "scripts": {
+    "build": "parcel build --no-source-maps index.html --public-url ./",
+    "parcel": "parcel"
+  },
+  "keywords": [],
+  "author": "Abin Simon",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@logseq/libs": "^0.0.15"
+  },
+  "logseq": {
+    "id": "logseq-plugin-noisy",
+    "title": "Noisy",
+    "icon": "./icon.png"
+  },
+  "devDependencies": {
+    "parcel": "^2.0.0"
+  }
+}
